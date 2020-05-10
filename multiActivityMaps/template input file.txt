@@ -1,0 +1,1 @@
+fileprefix	pathname	conditions	bkgnd	corrthres170814 ok107gc6fdcr2ctrl 2.14 s l mch.tif	/Users/aclin/Google Drive/Lab/Data/170814 test compare maps/	mch	4	0170814 ok107gc6fdcr2ctrl 2.13 s l oct.tif	/Users/aclin/Google Drive/Lab/Data/170814 test compare maps/	oct	4	0
