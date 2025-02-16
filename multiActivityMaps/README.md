@@ -133,3 +133,23 @@ The `'` will transpose the sparseness data into a row instead of a column.
 For maxDFF:
 
 `copy(result.maxDFF');`
+
+# How to use readCompareMapsFiles
+
+Make a .xlsx Excel spreadsheet with 5 columns
+
+* "condition": (control, experimental, etc)
+* "matFileFolder": path of the folder with the compareMaps.mat file
+* "matFile": the name of the compareMaps.mat file that stores the mask of the KC somata
+* "tifFileFolder": path of the folder with the .txt file that you used originally to point to the raw movie files
+* "tifFileList": the name of the .txt file that you used originally to point to the raw movie files
+
+Run `readCompareMapsFiles` and select the Excel spreadsheet
+
+It will generate a graph showing a trace which is the average across flies, and the shading is the SEM across flies, where each fly is the average across all 7 odors. The colors are hard-coded as black and red, and the conditions are in alphabetical order, but this is easily changed.
+
+And it will save the raw data in a .mat file with the same name as your Excel spreadsheet with `-summary.mat` appended. This includes the sparseness and correlation from the original compareMaps results (all brought together in one data structure). Also the mean response over time during the odor for each fly, which is in the variable `meanResp`.
+
+`meanResp` is a cell array, each cell is one condition. For example `meanResp{1}` could be the control, `meanResp{2}` the experimental (it goes in alphabetical order). In `meanResp{1}`, each row is one fly and each column is an odor (in the same order as you had in the spreadsheets: IA, EB, etc.). To get the mean across odors for each fly, you can do `mean(meanResp{1},2` to average across columns. Or to get just the response to IA, you can do `meanResp{1}(:,1)`.
+
+You need a separate .xlsx for each graph that you want to make.
